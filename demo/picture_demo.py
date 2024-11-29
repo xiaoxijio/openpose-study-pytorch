@@ -76,8 +76,8 @@ def visualize_paf(oriImg, pafs):
 with torch.no_grad():
     paf, heatmap, im_scale = get_outputs(oriImg, model, 'rtpose')
 
-visualize_heatmaps(oriImg, heatmap)  # 可视化关键点热力图
-visualize_paf(oriImg, paf)  # 可视化姿态向量图
+visualize_heatmaps(oriImg.copy(), heatmap)  # 可视化关键点热力图
+visualize_paf(oriImg.copy(), paf)  # 可视化姿态向量图
 
 print(im_scale)
 humans = paf_to_pose_cpp(heatmap, paf, cfg)
